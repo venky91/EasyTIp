@@ -47,9 +47,6 @@ public class TimeLog extends Activity implements android.view.View.OnClickListen
 		return true;
 	}
 	
-	
-	
-	
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
