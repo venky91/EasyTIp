@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import java.util.Stack;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,9 +19,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.CheckBox;
 
-public class ViewLog extends Activity implements android.view.View.OnClickListener {
+public class ViewLog extends ListActivity implements android.view.View.OnClickListener {
 
+	ArrayList<String> list = new ArrayList<String>();
+	
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.log_view2);	
 		
@@ -36,9 +40,7 @@ public class ViewLog extends Activity implements android.view.View.OnClickListen
 		}
 		*/
 		
-		final ListView listview = (ListView) findViewById(R.id.loglistview);
-		
-		ArrayList<String> list = new ArrayList<String>();
+		//final ListView listview = (ListView) findViewById(R.id.loglistview);
 		
 		List<Entry<String,Stack<BillEntry>>> list_ = new ArrayList(BillEntry.table.entrySet());
 		
@@ -48,9 +50,10 @@ public class ViewLog extends Activity implements android.view.View.OnClickListen
 			list.add(date);
 		}
 		
-	    final ArrayAdapter <String> adapter = new ArrayAdapter<String>(this,
-	            android.R.layout.simple_list_item_1, list);
+		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list));
 	    
+	    
+	    /*
 	    listview.setAdapter(adapter);
 	    
 	    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,6 +69,20 @@ public class ViewLog extends Activity implements android.view.View.OnClickListen
 	    	 }
 	    	 
 	    });
+	    */
+		
+	}
+	
+	@Override 
+	public void onListItemClick(ListView parent, View v, int position, long id) {
+		
+		String key = getListAdapter().getItem(position).toString();
+		
+		Intent myIntent = new Intent(ViewLog.this, TimeLog.class);
+		myIntent.putExtra("key", key);
+		
+		startActivity(myIntent);
+
 	}
 	
 	@Override

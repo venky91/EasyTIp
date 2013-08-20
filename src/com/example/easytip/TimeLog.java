@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class TimeLog extends Activity implements android.view.View.OnClickListener {
+public class TimeLog extends ListActivity implements android.view.View.OnClickListener {
 
-
-	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.log_time);
@@ -23,8 +22,6 @@ public class TimeLog extends Activity implements android.view.View.OnClickListen
 		String key = myInput.getString("key");
 		
 		Stack<BillEntry> temp = (Stack<BillEntry>) BillEntry.table.get(key);
-	
-		final ListView listview = (ListView) findViewById(R.id.timelogview);
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
@@ -33,10 +30,9 @@ public class TimeLog extends Activity implements android.view.View.OnClickListen
 			list.add(tempEntry.time);
 		}
 		
-		 final ArrayAdapter <String> adapter = new ArrayAdapter<String>(this,
-		            android.R.layout.simple_list_item_1, list);
+		 setListAdapter(new ArrayAdapter<String>(this,
+		            android.R.layout.simple_list_item_1, list));
 		 
-		 listview.setAdapter(adapter);
 		 
 	}
 	
