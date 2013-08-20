@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.CheckBox;
 
 public class ViewLog extends Activity implements android.view.View.OnClickListener {
 
@@ -35,6 +35,7 @@ public class ViewLog extends Activity implements android.view.View.OnClickListen
 					"      " + temp.subTotal + "             " + temp.tip +  "      " + temp.total + "\n");
 		}
 		*/
+		
 		final ListView listview = (ListView) findViewById(R.id.loglistview);
 		
 		ArrayList<String> list = new ArrayList<String>();
