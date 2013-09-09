@@ -52,24 +52,6 @@ public class ViewLog extends ListActivity implements android.view.View.OnClickLi
 		
 		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list));
 	    
-	    
-	    /*
-	    listview.setAdapter(adapter);
-	    
-	    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-	    	 @Override
-	         public void onItemClick(AdapterView<?> parent, final View view,
-	             int position, long id) {
-	    		 String key = listview.getAdapter().getItem(position).toString();
-	    		 
-	    		 Intent myIntent = new Intent(ViewLog.this, TimeLog.class);
-	    		 myIntent.putExtra("key", key);
-	    		 
-	    		 startActivity(myIntent);
-	    	 }
-	    	 
-	    });
-	    */
 		
 	}
 	
