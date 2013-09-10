@@ -85,7 +85,7 @@ public class DBAdapter extends SQLiteOpenHelper{
         	
         	
         }
-		
+		db.close();
         return aList;
 		
 	}
