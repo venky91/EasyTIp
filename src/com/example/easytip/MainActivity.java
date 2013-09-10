@@ -114,17 +114,9 @@ public class MainActivity extends Activity implements android.view.View.OnClickL
 				
 				BillEntry newEntry = new BillEntry( sub_total, tip_, showTotal);
 				
-				if (BillEntry.table.containsKey(newEntry.date) == true) {
-					Stack<BillEntry> temp = BillEntry.table.get(newEntry.date);
-					temp.push(newEntry);
-					BillEntry.table.put(newEntry.date, temp);
-					
-				}
-				else{
-					Stack<BillEntry> sq = new Stack<BillEntry>();
-					sq.push(newEntry);
-					BillEntry.table.put(newEntry.date, sq);
- 				}
+				DBAdapter db = new DBAdapter(MainActivity.this);
+				
+				db.addBillEntry( newEntry );
 				
 			}
 		});
