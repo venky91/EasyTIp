@@ -1,4 +1,5 @@
 package com.example.easytip;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;	
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -39,5 +40,17 @@ public class DBAdapter extends SQLiteOpenHelper{
 		
 	}
 	
-	
+	public void addBillEntry( BillEntry entry ) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		ContentValues values = new ContentValues();
+		values.put(KEY_DATE, entry.date);
+		values.put(KEY_SUBTOTAL, entry.subTotal);
+		values.put(KEY_TIP, entry.tip);
+		values.put(KEY_TOTAL, entry.total);
+		
+		db.insert(DATABASE_TABLE, null, values);
+	    db.close(); // Closing database connection
+		
+	}
 }
