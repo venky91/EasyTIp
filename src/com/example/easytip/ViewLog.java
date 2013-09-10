@@ -21,6 +21,8 @@ import android.widget.CheckBox;
 
 public class ViewLog extends ListActivity implements android.view.View.OnClickListener {
 
+	public static List<BillEntry> aList;
+	
 	ArrayList<String> list = new ArrayList<String>();
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class ViewLog extends ListActivity implements android.view.View.OnClickLi
 		
 		DBAdapter db = new DBAdapter(this);
 		
-		List<BillEntry> aList = db.getAllBillEntries();
+		aList = db.getAllBillEntries();
 		BillEntry a;
 		
 		for ( int i = aList.size() - 1; i >= 0; i-- ){
