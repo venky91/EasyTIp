@@ -4,10 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Stack;
 import java.util.Map;
-
-
 
 public class BillEntry {
 	
@@ -41,9 +40,6 @@ public class BillEntry {
 				
 		this.date = dateFormat.format(dNow);
 	
-		
-		this.entryId = counter++;
-		
 	}
 	
 	public void setDate( String date ) {
@@ -60,5 +56,10 @@ public class BillEntry {
 	
 	public void setTotal( String total ) {
 		this.total = total;
+	}
+	
+	public void setDBid( int id ) {
+		
+		
 	}
 }

@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 public class ViewLog extends ListActivity implements android.view.View.OnClickListener {
 
@@ -29,20 +30,7 @@ public class ViewLog extends ListActivity implements android.view.View.OnClickLi
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.log_view2);	
-		
-		/*
-		((TextView) findViewById(R.id.logView)).append("    Date" + "      " + "   Subtotal" + "      " + "Tip"
-					+ "      " + "Total" + "\n");
-		*/
-		/*
-		for ( int i = BillEntry.table.size() ; i >= 0; i-- ) {
-			BillEntry temp = BillEntry.sq.elementAt(i);
-			((TextView) findViewById(R.id.logView)).append(temp.yy + "/" + temp.mm + "/" + temp.dd + 
-					"      " + temp.subTotal + "             " + temp.tip +  "      " + temp.total + "\n");
-		}
-		*/
-		
-		//final ListView listview = (ListView) findViewById(R.id.loglistview);
+	
 		
 		DBAdapter db = new DBAdapter(this);
 		
@@ -62,13 +50,19 @@ public class ViewLog extends ListActivity implements android.view.View.OnClickLi
 	@Override 
 	public void onListItemClick(ListView parent, View v, int position, long id) {
 		
+		
 		String key = getListAdapter().getItem(position).toString();
+		
+		/*
+		Toast pr = Toast.makeText(ViewLog.this, key, Toast.LENGTH_LONG);
+		pr.show();
+		*/
 		
 		Intent myIntent = new Intent(ViewLog.this, TimeLog.class);
 		myIntent.putExtra("key", key);
 		
 		startActivity(myIntent);
-
+	
 	}
 	
 	@Override
