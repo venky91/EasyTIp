@@ -42,39 +42,18 @@ public class ViewLog extends ListActivity implements android.view.View.OnClickLi
 		
 		//final ListView listview = (ListView) findViewById(R.id.loglistview);
 		
-		List<Entry<String,Stack<BillEntry>>> list_ = new ArrayList(BillEntry.table.entrySet());
+		DBAdapter db = new DBAdapter(this);
 		
-		for ( int i = list_.size() - 1; i >= 0; i-- ){
-			Entry<String,Stack<BillEntry>> entry = list_.get(i);
-			String date = entry.getValue().get(0).date;
-			list.add(date);
+		List<BillEntry> aList = db.getAllBillEntries();
+		BillEntry a;
+		
+		for ( int i = aList.size() - 1; i >= 0; i-- ){
+			a = aList.get(i);
+			list.add(a.date);
 		}
 		
 		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list));
 	    
-		/*
-		final ListView listview = getListView();
-		listview.setItemsCanFocus(false);
-		listview.setChoiceMode(ListView.);
-		*/
-	    
-	    /*
-	    listview.setAdapter(adapter);
-	    
-	    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-	    	 @Override
-	         public void onItemClick(AdapterView<?> parent, final View view,
-	             int position, long id) {
-	    		 String key = listview.getAdapter().getItem(position).toString();
-	    		 
-	    		 Intent myIntent = new Intent(ViewLog.this, TimeLog.class);
-	    		 myIntent.putExtra("key", key);
-	    		 
-	    		 startActivity(myIntent);
-	    	 }
-	    	 
-	    });
-	    */
 		
 	}
 	
