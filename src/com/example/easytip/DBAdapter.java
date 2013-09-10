@@ -58,4 +58,35 @@ public class DBAdapter extends SQLiteOpenHelper{
 		
 	}
 	
+	public List<BillEntry> getAllBillEntries() {
+		
+		List<BillEntry> aList = new ArrayList<BillEntry>();
+		
+		// Select All Query
+        String selectQuery = "SELECT  * FROM " + DATABASE_TABLE;
+        
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        
+        if ( cursor.moveToFirst() ) {
+        	do {
+        		
+        		BillEntry entry = new BillEntry();
+        		
+        		entry.setDate( cursor.getString(1) );
+        		entry.setSubTotal( cursor.getString(2) );
+        		entry.setTip( cursor.getString(3) );
+        		entry.setTotal( cursor.getString(4) );
+        		
+        		aList.add( entry );
+        		
+        	} 
+        	while ( cursor.moveToNext() );
+        	
+        	
+        }
+		
+        return aList;
+		
+	}
 }
