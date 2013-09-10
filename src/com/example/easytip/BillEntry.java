@@ -23,10 +23,12 @@ public class BillEntry {
 	
 	public String date, time;
 	
-
-	
 	public static Map<String, Stack<BillEntry>> table = new LinkedHashMap<String,Stack<BillEntry>>();
 	public static int counter = 1;
+	
+	public BillEntry() {
+		
+	}
 	
 	public BillEntry( String subTotal, String tip, String total) {
 		
@@ -44,4 +46,19 @@ public class BillEntry {
 		
 	}
 	
+	public void setDate( String date ) {
+		this.date = date;
+	}
+	
+	public void setSubTotal( String subTotal ) {
+		this.subTotal = subTotal;
+	}
+	
+	public void setTip( String tip ) {
+		this.tip = tip;
+	}
+	
+	public void setTotal( String total ) {
+		this.total = total;
+	}
 }
