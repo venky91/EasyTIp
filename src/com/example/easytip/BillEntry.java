@@ -60,6 +60,6 @@ public class BillEntry {
 	
 	public void setDBid( int id ) {
 		
-		
+		this.entryId = id;
 	}
 }

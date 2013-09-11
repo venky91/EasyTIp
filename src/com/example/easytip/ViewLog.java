@@ -39,7 +39,8 @@ public class ViewLog extends ListActivity implements android.view.View.OnClickLi
 		
 		for ( int i = aList.size() - 1; i >= 0; i-- ){
 			a = aList.get(i);
-			list.add(a.date);
+			String entry = a.entryId + ": " + a.date;
+			list.add(entry);
 		}
 		
 		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list));
@@ -52,6 +53,8 @@ public class ViewLog extends ListActivity implements android.view.View.OnClickLi
 		
 		
 		String key = getListAdapter().getItem(position).toString();
+		String[] str = key.split(": ");
+		String entryId = str[0];
 		
 		/*
 		Toast pr = Toast.makeText(ViewLog.this, key, Toast.LENGTH_LONG);
@@ -59,7 +62,7 @@ public class ViewLog extends ListActivity implements android.view.View.OnClickLi
 		*/
 		
 		Intent myIntent = new Intent(ViewLog.this, TimeLog.class);
-		myIntent.putExtra("key", key);
+		myIntent.putExtra("key", entryId);
 		
 		startActivity(myIntent);
 	

@@ -2,7 +2,8 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:id="@+id/timelayout" >
 
     <TextView
         android:id="@+id/subTotal"
@@ -62,5 +63,14 @@
         android:layout_alignRight="@+id/showTip"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/deleteEntry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showTotal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="102dp"
+        android:text="Delete Entry" />
 
 </RelativeLayout>

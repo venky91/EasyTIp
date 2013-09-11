@@ -58,6 +58,13 @@ public class DBAdapter extends SQLiteOpenHelper{
 		
 	}
 	
+	public void deleteBillEntry( int id ) {
+		
+	SQLiteDatabase db = this.getWritableDatabase();
+	db.delete(DATABASE_TABLE, KEY_ROWID + "=" + id, null);
+	db.close();
+	}
+	
 	public List<BillEntry> getAllBillEntries() {
 		
 		List<BillEntry> aList = new ArrayList<BillEntry>();
