@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -59,10 +61,38 @@ public class TimeLog extends Activity implements android.view.View.OnClickListen
 			@Override
 			public void onClick(View v) {
 				
-				DBAdapter db = new DBAdapter(TimeLog.this);
-				db.deleteBillEntry(id);
-				Intent myIntent = new Intent(TimeLog.this, ViewLog.class);
-				startActivity(myIntent);
+				AlertDialog.Builder alertDialog = new AlertDialog.Builder(TimeLog.this);
+				
+				// Setting Dialog Title
+				alertDialog.setTitle("Confirm Delete");
+				
+				// Setting Dialog Message
+				alertDialog.setMessage("Are you sure you want to delete this entry?");
+				
+				// Setting Positive "Yes" button
+				alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						DBAdapter db = new DBAdapter(TimeLog.this);
+						db.deleteBillEntry(id);
+						Intent myIntent = new Intent(TimeLog.this, ViewLog.class);
+						startActivity(myIntent);
+						
+					}
+				});
+				
+				// Setting Negative "No" button
+				alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						return;
+						
+					}
+				});
+				
+				alertDialog.show();
 			}
 			
 		});
