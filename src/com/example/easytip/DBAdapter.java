@@ -73,6 +73,7 @@ public class DBAdapter extends SQLiteOpenHelper{
         		
         		BillEntry entry = new BillEntry();
         		
+        		entry.setDBid(cursor.getInt(0));
         		entry.setDate( cursor.getString(1) );
         		entry.setSubTotal( cursor.getString(2) );
         		entry.setTip( cursor.getString(3) );
